@@ -1,3 +1,5 @@
+{{indexmenu_n>1}}
+
 # Golang SDK 使用说明
 
 | 快速导航 | 链接                                                         |
