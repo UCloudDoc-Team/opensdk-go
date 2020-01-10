@@ -18,3 +18,19 @@ req.Memory = ucloud.Int(1024)
 
 数组和结构体等类型与 Go 原生类型系统保持一致。
 
+<!-- tabs:start -->
+
+#### ** English **
+
+Hello!
+
+#### ** French **
+
+Bonjour!
+
+#### ** Italian **
+
+Ciao!
+
+<!-- tabs:end -->
+
