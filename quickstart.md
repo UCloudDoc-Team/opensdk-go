@@ -61,28 +61,28 @@ dep ensure -add github.com/ucloud/ucloud-sdk-go
 package main
 
 import (
+    "fmt"
+
     "github.com/ucloud/ucloud-sdk-go/ucloud"
     "github.com/ucloud/ucloud-sdk-go/ucloud/auth"
     "github.com/ucloud/ucloud-sdk-go/services/uhost"
 )
 
-func loadConfig() (*ucloud.Config, *auth.Credential) {
-    cfg := ucloud.NewConfig()
-
-    credential := auth.NewCredential()
-    credential.PrivateKey ="my_privatekey"
-    credential.PublicKey = "my_publickey"
-
-    return &cfg, &credential
-}
-
 func main() {
-    cfg, credential := loadConfig()
-    uhostClient := uhost.NewClient(cfg, credential)
+    cfg := ucloud.NewConfig()
+    cfg.Region = "cn-bj2"
+
+    // replace the public/private key by your own
+    credential := auth.NewCredential()
+    credential.PrivateKey = "my_private_key"
+    credential.PublicKey = "my_public_key"
+
+    uhostClient := uhost.NewClient(&cfg, &credential)
+
     req := uhostClient.NewCreateUHostInstanceRequest()
     req.Name       = ucloud.String("sdk-example-uhost")
     req.Zone       = ucloud.String("cn-bj2-05")
-    req.ImageId    = ucloud.String("uimage-ixczxu")
+    req.ImageId    = ucloud.String("uimage-xxx") // you can replace the image with an available id
     req.LoginMode  = ucloud.String("Password")
     req.Password   = ucloud.String("my_uhost_password")
     req.ChargeType = ucloud.String("Dynamic")
@@ -94,9 +94,9 @@ func main() {
     newUHost,err := uhostClient.CreateUHostInstance(req)
     if err != nil {
         fmt.Printf("something bad happened: %s\n", err)
+    } else {
+        fmt.Printf("resource id of the uhost: %s\n", newUHost.UHostIds[0])
     }
-
-    fmt.Printf("resource id of the uhost: %s\n", newUHost.UHostIds[0])
 }
 ```
 
