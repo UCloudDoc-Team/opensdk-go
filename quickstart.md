@@ -149,4 +149,3 @@ export GOPROXY=https://goproxy.io
 **Note**：如同时使用 go mod 和 Goland IDE，请在 Settings 中搜索 vgo，并启用 vgo 支持。
 
 **Note**：如同时使用 go mod 和 GOPATH，注意 go mod init/tidy 不能在 GOPATH 下执行，把项目从 GOPATH 下移出即可。
-
