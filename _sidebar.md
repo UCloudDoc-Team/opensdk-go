@@ -6,23 +6,5 @@
 * [错误处理](/opensdk-go/error)
 * [类型系统](/opensdk-go/typesystem)
 * [请求中间件](/opensdk-go/middleware)
-* [工具箱](/opensdk-go/helpers)
-
-
-        
-
-    
-
-
-
-
-
-
-
-
-
-    
-   
-   
-    
+* [工具箱](/opensdk-go/helpers)   
         
