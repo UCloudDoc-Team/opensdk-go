@@ -76,7 +76,7 @@ Timeout option will wait and refresh until target state or timeout is reached. S
 
 ### 延迟
 
-延迟选项用于在第一次请求前，等待特定的时间.
+延迟选项用于在第一次请求前，等待特定的时间。
 
 ```go
 waiter.StateWaiter{
@@ -88,7 +88,7 @@ waiter.StateWaiter{
 }
 ```
 
-该选项通常用于在资源创建后等待一小段时间，再开始刷新状态.
+该选项通常用于在资源创建后等待一小段时间，再开始刷新状态。
 
 ## Example
 
