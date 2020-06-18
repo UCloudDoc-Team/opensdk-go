@@ -112,6 +112,7 @@ SDK 中的每一个 api 调用都有详细的注释文档，可以通过 Editor/
 - [错误处理](opensdk-go/error)，了解如何处理不同类型的 SDK 异常，包括参数错误，RetCode 不为 0 的业务异常等。
 - [类型系统](opensdk-go/typesystem)，了解 SDK 如何校验参数，并规范化 API 的返回值。
 - [请求中间件](opensdk-go/middleware)，了解如何拦截 SDK 发起的请求，并统一添加额外的逻辑。
+- [泛化调用](opensdk-go/generic)，如何调用 SDK 尚未支持的 API（不建议使用此类 API，因为没有兼容性保证）。
 - [工具箱](opensdk-go/helpers)，SDK 提供的额外支持，如状态轮询函数等。
 
 ## 获取更多示例
