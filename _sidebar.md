@@ -1,3 +1,4 @@
+<div class="sidebar_title"> OpenSDK Go</div>
 
 * [概览](/opensdk-go/README)
 * [快速开始](/opensdk-go/quickstart)
