@@ -69,34 +69,43 @@ import (
 )
 
 func main() {
-    cfg := ucloud.NewConfig()
-    cfg.Region = "cn-bj2"
+	cfg := ucloud.NewConfig()
+	cfg.Region = "cn-bj2"
 
-    // replace the public/private key by your own
-    credential := auth.NewCredential()
-    credential.PrivateKey = "my_private_key"
-    credential.PublicKey = "my_public_key"
+	// replace the public/private key by your own
+	credential := auth.NewCredential()
+	credential.PrivateKey = "my_private_key"
+	credential.PublicKey = "my_public_key"
 
-    uhostClient := uhost.NewClient(&cfg, &credential)
+	uhostClient := uhost.NewClient(&cfg, &credential)
 
-    req := uhostClient.NewCreateUHostInstanceRequest()
-    req.Name       = ucloud.String("sdk-example-uhost")
-    req.Zone       = ucloud.String("cn-bj2-05")
-    req.ImageId    = ucloud.String("uimage-xxx") // you can replace the image with an available id
-    req.LoginMode  = ucloud.String("Password")
-    req.Password   = ucloud.String("my_uhost_password")
-    req.ChargeType = ucloud.String("Dynamic")
-    req.CPU        = ucloud.Int(1)
-    req.Memory     = ucloud.Int(1024)
-    req.Tag        = ucloud.String("sdk-example")
-
-    // send request
-    newUHost,err := uhostClient.CreateUHostInstance(req)
-    if err != nil {
-        fmt.Printf("something bad happened: %s\n", err)
-    } else {
-        fmt.Printf("resource id of the uhost: %s\n", newUHost.UHostIds[0])
-    }
+	req := uhostClient.NewCreateUHostInstanceRequest()
+	req.Name = ucloud.String("sdk-example-uhost")
+	req.MachineType = ucloud.String("O")
+	req.Zone = ucloud.String("cn-bj2-05")
+	req.ImageId = ucloud.String("uimage-xxx") // you can replace the image with an available id
+	req.LoginMode = ucloud.String("Password")
+	req.Password = ucloud.String("my_uhost_password")
+	req.ChargeType = ucloud.String("Dynamic")
+	req.CPU = ucloud.Int(1)
+	req.Memory = ucloud.Int(1024)
+	req.Tag = ucloud.String("sdk-example")
+	req.Disks = []uhost.UHostDisk{
+		// system disk
+		{
+			IsBoot:     ucloud.String("True"),
+			BackupType: ucloud.String("NONE"),
+			Size:       ucloud.Int(20),
+			Type:       ucloud.String("CLOUD_RSSD"),
+		},
+	}
+	// send request
+	newUHost, err := uhostClient.CreateUHostInstance(req)
+	if err != nil {
+		fmt.Printf("something bad happened: %s\n", err)
+	} else {
+		fmt.Printf("resource id of the uhost: %s\n", newUHost.UHostIds[0])
+	}
 }
 ```
 
